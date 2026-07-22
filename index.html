@@ -204,6 +204,26 @@
       .contact-row span:last-child{text-align:left;margin-top:4px}
     }
 
+
+    /* About photo slider — added without changing existing content */
+    .about-slider-wrap{grid-column:1/-1;margin-top:34px;position:relative}
+    .about-slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;gap:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;border-radius:28px}
+    .about-slider::-webkit-scrollbar{display:none}
+    .about-slide{flex:0 0 100%;scroll-snap-align:start;margin:0;background:#fff;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);display:grid;place-items:center;min-height:280px}
+    .about-slide img{display:block;width:100%;height:min(68vw,650px);object-fit:contain;background:#f4efe7}
+    .about-slider-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:16px}
+    .about-slider-btn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(89,62,47,.2);background:#fff;color:var(--brown);font-size:22px;line-height:1;box-shadow:0 8px 22px rgba(67,45,32,.12);cursor:pointer}
+    .about-slider-dots{display:flex;gap:8px;align-items:center}
+    .about-slider-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(89,62,47,.25);cursor:pointer;transition:.25s ease}
+    .about-slider-dot.active{width:24px;border-radius:99px;background:var(--brown)}
+    @media(max-width:620px){
+      .about-slider-wrap{margin-top:24px}
+      .about-slider{gap:10px;border-radius:22px}
+      .about-slide{border-radius:22px;min-height:220px}
+      .about-slide img{height:72vw;max-height:430px}
+      .about-slider-btn{width:38px;height:38px;font-size:20px}
+    }
+
     /* Version 2 visual enhancements — original proposal content remains unchanged */
     body.loading{overflow:hidden}
     .loader{
@@ -355,6 +375,19 @@
         <figure class="pet-photo yabe"><img src="yabe.jpg" alt="Yabe 奶油色長毛臘腸" loading="lazy"></figure>
         <figure class="pet-photo bonnie"><img src="bonnie.jpg" alt="Bonnie 白色比熊" loading="lazy"></figure>
         <img class="collage-logo" src="yabe-bonnie-logo.jpg" alt="Yabe 與 Bonnie 品牌圖" loading="lazy">
+      </div>
+
+      <div class="about-slider-wrap fade" aria-label="狗狗照片滑動區域">
+        <div class="about-slider" id="aboutPhotoSlider">
+          <figure class="about-slide"><img src="about-slide-1.jpg" alt="Yabe、Bonnie 與球球合照" loading="lazy"></figure>
+          <figure class="about-slide"><img src="about-slide-2.jpg" alt="狗狗們在公園合照" loading="lazy"></figure>
+          <figure class="about-slide"><img src="about-slide-3.jpg" alt="狗狗們在戶外座椅合照" loading="lazy"></figure>
+        </div>
+        <div class="about-slider-controls" aria-label="照片切換控制">
+          <button class="about-slider-btn" id="aboutPrev" type="button" aria-label="上一張">‹</button>
+          <div class="about-slider-dots" id="aboutSliderDots" aria-label="照片頁數"></div>
+          <button class="about-slider-btn" id="aboutNext" type="button" aria-label="下一張">›</button>
+        </div>
       </div>
     </div>
   </section>
@@ -511,6 +544,43 @@
     window.addEventListener("scroll", toggleBackToTop, {passive:true});
     toggleBackToTop();
     backToTop.addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
+  
+    // About section photo slider
+    (() => {
+      const slider = document.getElementById('aboutPhotoSlider');
+      const prev = document.getElementById('aboutPrev');
+      const next = document.getElementById('aboutNext');
+      const dotsWrap = document.getElementById('aboutSliderDots');
+      if (!slider || !prev || !next || !dotsWrap) return;
+      const slides = [...slider.querySelectorAll('.about-slide')];
+      const dots = slides.map((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'about-slider-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `前往第 ${i + 1} 張照片`);
+        dot.addEventListener('click', () => slides[i].scrollIntoView({behavior:'smooth', block:'nearest', inline:'start'}));
+        dotsWrap.appendChild(dot);
+        return dot;
+      });
+      const currentIndex = () => Math.max(0, Math.min(slides.length - 1, Math.round(slider.scrollLeft / slider.clientWidth)));
+      const go = offset => {
+        const i = (currentIndex() + offset + slides.length) % slides.length;
+        slides[i].scrollIntoView({behavior:'smooth', block:'nearest', inline:'start'});
+      };
+      prev.addEventListener('click', () => go(-1));
+      next.addEventListener('click', () => go(1));
+      let ticking = false;
+      slider.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const i = currentIndex();
+          dots.forEach((d, n) => d.classList.toggle('active', n === i));
+          ticking = false;
+        });
+      }, {passive:true});
+    })();
+
   </script>
 </body>
 </html>
