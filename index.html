@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Yabe & Bonnie 狗聚品牌合作企劃書｜Every Wag Tells a Story">
   <meta name="theme-color" content="#efe5da">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <title>Yabe & Bonnie｜狗聚品牌合作企劃</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +35,10 @@
       overflow-x:hidden;
     }
     a{text-decoration:none;color:inherit}
-    img{display:block;max-width:100%}
+    img{display:block;max-width:100%;height:auto}
+    figure{margin:0;max-width:100%}
+    .grid2,.grid3,.grid4,.meta-grid,.timeline,.sponsors,.contact-grid{min-width:0}
+    .card,.visual,.stat,.meta,.step,.sponsor,.contact-card{min-width:0;overflow-wrap:anywhere}
     .container{width:min(1120px,calc(100% - 36px));margin:auto}
 
     .nav{
@@ -198,13 +203,104 @@
       .contact-row span{display:block}
       .contact-row span:last-child{text-align:left;margin-top:4px}
     }
+
+    /* Version 2 visual enhancements — original proposal content remains unchanged */
+    body.loading{overflow:hidden}
+    .loader{
+      position:fixed;inset:0;z-index:9999;background:var(--cream);
+      display:grid;place-items:center;transition:opacity .55s ease,visibility .55s ease;
+    }
+    .loader.hide{opacity:0;visibility:hidden}
+    .loader-inner{text-align:center;color:var(--brown);padding:24px}
+    .loader-logo{width:112px;height:112px;border-radius:50%;object-fit:cover;border:7px solid #fff;box-shadow:var(--shadow);margin:0 auto 18px;animation:loaderFloat 1.2s ease-in-out infinite alternate}
+    .loader-title{font-family:"Playfair Display",serif;font-size:28px;font-weight:700;letter-spacing:-.02em}
+    .loader-paws{margin-top:12px;letter-spacing:8px;animation:pulse 1s ease-in-out infinite}
+    @keyframes loaderFloat{to{transform:translateY(-8px)}}
+    @keyframes pulse{50%{opacity:.35}}
+
+    .photo-collage{
+      display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;
+      padding:18px;background:rgba(255,255,255,.58);border:1px solid var(--line);
+      border-radius:36px;box-shadow:var(--shadow);overflow:hidden;position:relative;
+    }
+    .pet-photo{
+      position:relative;overflow:hidden;border:8px solid #fff;border-radius:30px;
+      box-shadow:0 18px 38px rgba(83,60,43,.16);background:#f5eee7;
+      aspect-ratio:4/5;min-width:0;
+    }
+    .pet-photo img{
+      width:100%;height:100%;object-fit:contain;object-position:center;
+      background:#f5eee7;
+    }
+    .pet-photo.yabe,.pet-photo.bonnie{width:100%;height:auto;inset:auto;transform:none}
+    .collage-logo{
+      position:absolute;left:50%;bottom:10px;transform:translateX(-50%);
+      width:92px;height:92px;border-radius:50%;object-fit:contain;background:#fff;
+      border:6px solid #fff;box-shadow:0 12px 28px rgba(83,60,43,.17);z-index:3;
+    }
+
+    .ig-link{display:inline-flex;align-items:center;gap:7px;font-weight:800;color:var(--brown)}
+    .ig-link::before{content:"◎";font-size:18px}
+    .nav-links .ig-link{color:#9f6f84}
+
+    .floating-paw{position:fixed;z-index:1;pointer-events:none;opacity:.08;font-size:clamp(28px,4vw,54px);animation:drift 8s ease-in-out infinite}
+    .floating-paw.p1{left:4%;top:22%}.floating-paw.p2{right:4%;top:42%;animation-delay:-2.7s}.floating-paw.p3{left:8%;bottom:12%;animation-delay:-5.1s}
+    @keyframes drift{0%,100%{transform:translate3d(0,0,0) rotate(-10deg)}50%{transform:translate3d(10px,-22px,0) rotate(12deg)}}
+
+    .paw{opacity:0;visibility:hidden;transform:translateY(12px);transition:.25s ease;border:0;cursor:pointer}
+    .paw.visible{opacity:1;visibility:visible;transform:none}
+    .paw:hover{transform:translateY(-3px);background:#87664f}
+    .btn,.nav-links a,.contact-row{transition:transform .2s ease,opacity .2s ease,background .2s ease}
+    .btn:active{transform:scale(.98)}
+
+    @media(max-width:900px){
+      .photo-collage{gap:14px}
+    }
+    @media(max-width:620px){
+      body{line-height:1.72}
+      .container{width:min(100% - 24px,1120px)}
+      .nav{background:rgba(248,243,237,.94)}
+      .nav-inner{gap:8px}.brand{font-size:14px}.brand span{white-space:nowrap}
+      .nav-ig-mobile{display:inline-flex!important;font-size:13px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff}
+      .hero{min-height:100svh;background-position:52% center}
+      .hero-content{padding:118px 0 72px}
+      .eyebrow{font-size:10px;letter-spacing:.14em}
+      h1{font-size:clamp(44px,14vw,58px);line-height:1.02}
+      .hero-cn{font-size:21px}
+      .lead{font-size:15px}
+      .title{font-size:38px}
+      .card,.sponsor{padding:22px;border-radius:24px}
+      .grid2{gap:22px}
+      .photo-collage{grid-template-columns:1fr;gap:14px;margin-top:6px;border-radius:28px;padding:12px;overflow:hidden}
+      .pet-photo{width:100%;aspect-ratio:4/5;border-width:6px;border-radius:23px}
+      .pet-photo img{object-fit:contain;object-position:center}
+      .collage-logo{position:relative;left:auto;bottom:auto;transform:none;width:76px;height:76px;border-width:5px;margin:-2px auto 2px}
+      .stat{min-height:120px;padding:20px}.stat strong{font-size:35px}
+      .meta{padding:17px}.step{padding:16px 12px}
+      .floating-paw{display:none}
+      .paw{right:14px;bottom:calc(14px + env(safe-area-inset-bottom));width:48px;height:48px}
+      .contact{padding-bottom:82px}
+    }
+    @media(min-width:621px){.nav-ig-mobile{display:none!important}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
   </style>
 </head>
-<body>
+<body class="loading">
+  <div class="loader" id="loader" aria-label="網站載入中">
+    <div class="loader-inner">
+      <img class="loader-logo" src="favicon.png" alt="Yabe & Bonnie">
+      <div class="loader-title">Yabe & Bonnie</div>
+      <div class="loader-paws">🐾 🐾 🐾</div>
+    </div>
+  </div>
+  <span class="floating-paw p1" aria-hidden="true">🐾</span>
+  <span class="floating-paw p2" aria-hidden="true">🐾</span>
+  <span class="floating-paw p3" aria-hidden="true">🐾</span>
   <nav class="nav">
     <div class="container nav-inner">
       <a class="brand" href="#top">
-        <img src="yabe-bonnie-logo.jpg" alt="Yabe & Bonnie">
+        <img src="favicon.png" alt="Yabe & Bonnie">
         <span>Yabe & Bonnie</span>
       </a>
       <div class="nav-links">
@@ -213,7 +309,9 @@
         <a href="#event">活動資訊</a>
         <a href="#sponsor">贊助方案</a>
         <a href="#contact">聯絡我們</a>
+        <a class="ig-link" href="https://www.instagram.com/b.y_lifediary/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
+      <a class="ig-link nav-ig-mobile" href="https://www.instagram.com/b.y_lifediary/" target="_blank" rel="noopener noreferrer" aria-label="前往 Instagram">IG</a>
     </div>
   </nav>
 
@@ -229,7 +327,7 @@
         </p>
         <div class="actions">
           <a class="btn btn-light" href="#sponsor">查看合作方案</a>
-          <a class="btn btn-outline" href="#contact">聯絡我們</a>
+          <a class="btn btn-outline" href="https://www.instagram.com/b.y_lifediary/" target="_blank" rel="noopener noreferrer">前往 Instagram</a>
         </div>
       </div>
     </div>
@@ -253,8 +351,10 @@
           </p>
         </div>
       </div>
-      <div class="visual fade">
-        <img src="yabe-bonnie-logo.jpg" alt="Yabe 與 Bonnie 品牌圖">
+      <div class="photo-collage fade" aria-label="Yabe 與 Bonnie 照片">
+        <figure class="pet-photo yabe"><img src="yabe.jpg" alt="Yabe 奶油色長毛臘腸" loading="lazy"></figure>
+        <figure class="pet-photo bonnie"><img src="bonnie.jpg" alt="Bonnie 白色比熊" loading="lazy"></figure>
+        <img class="collage-logo" src="yabe-bonnie-logo.jpg" alt="Yabe 與 Bonnie 品牌圖" loading="lazy">
       </div>
     </div>
   </section>
@@ -263,7 +363,7 @@
     <div class="container">
       <div class="tag">02｜SOCIAL MEDIA</div>
       <h2 class="title">社群內容與數據</h2>
-      <p class="lead">Instagram：@b.y_lifediary</p>
+      <p class="lead"><a class="ig-link" href="https://www.instagram.com/b.y_lifediary/" target="_blank" rel="noopener noreferrer">Instagram：@b.y_lifediary</a></p>
       <div class="grid4 fade">
         <div class="stat"><strong>1,200+</strong><span>Instagram 粉絲數</span></div>
         <div class="stat"><strong>12.2萬</strong><span>近兩個月 Reels 累積觀看</span></div>
@@ -383,16 +483,34 @@
     </div>
   </section>
 
-  <a class="paw" href="#top" aria-label="回到頂端">🐾</a>
+  <button class="paw" id="backToTop" type="button" aria-label="回到頂端">🐾</button>
   <footer>© 2026 Yabe & Bonnie · Every Wag Tells a Story</footer>
 
   <script>
+    const loader = document.getElementById("loader");
+    const finishLoading = () => {
+      loader.classList.add("hide");
+      document.body.classList.remove("loading");
+      document.querySelector(".hero-content")?.classList.add("show");
+    };
+    window.addEventListener("load", () => setTimeout(finishLoading, 650));
+    setTimeout(finishLoading, 2800);
+
     const observer = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
-        if(entry.isIntersecting) entry.target.classList.add("show");
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
       });
-    },{threshold:.12});
-    document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
+    },{threshold:.1,rootMargin:"0px 0px -30px"});
+    document.querySelectorAll(".fade:not(.hero-content)").forEach(el=>observer.observe(el));
+
+    const backToTop = document.getElementById("backToTop");
+    const toggleBackToTop = () => backToTop.classList.toggle("visible", window.scrollY > 520);
+    window.addEventListener("scroll", toggleBackToTop, {passive:true});
+    toggleBackToTop();
+    backToTop.addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
   </script>
 </body>
 </html>
