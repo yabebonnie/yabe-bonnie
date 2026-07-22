@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yabe & Bonnie 狗聚品牌合作企劃｜Every Wag Tells a Story" />
+  <meta name="theme-color" content="#efe4d7" />
+  <title>Yabe & Bonnie｜狗聚品牌合作企劃</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --cream:#f8f3ec;
+      --milk:#fffaf5;
+      --latte:#dfc9b4;
+      --latte-2:#c7a98e;
+      --latte-dark:#9f7c61;
+      --brown:#5b4638;
+      --ink:#4a4038;
+      --muted:#85786f;
+      --line:#eadfd3;
+      --white:#fff;
+      --shadow:0 18px 55px rgba(89,66,49,.12);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Noto Sans TC",system-ui,-apple-system,sans-serif;
+      color:var(--ink);
+      background:var(--cream);
+      line-height:1.8;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    button{font:inherit}
+    .container{width:min(1120px,calc(100% - 40px));margin:auto}
+
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:rgba(248,243,236,.86);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(223,201,180,.42);
+    }
+
+    .nav-inner{
+      height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+    }
+
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--brown)}
+    .brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+    .nav-links{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+    .nav-links a:hover{color:var(--brown)}
+
+    .hero{
+      min-height:100svh;
+      position:relative;
+      display:grid;
+      align-items:end;
+      background-image:
+        linear-gradient(90deg,rgba(62,44,32,.78) 0%,rgba(62,44,32,.36) 48%,rgba(62,44,32,.06) 100%),
+        linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.28)),
+        url("assets/hero-dogs.jpg");
+      background-size:cover;
+      background-position:center;
+      color:white;
+      overflow:hidden;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;inset:auto 0 0;
+      height:130px;
+      background:linear-gradient(to top,var(--cream),transparent);
+    }
+
+    .hero-content{position:relative;z-index:2;padding:150px 0 120px;max-width:760px}
+    .kicker{font-size:13px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;opacity:.88}
+    h1{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(54px,8vw,96px);
+      line-height:1.03;
+      margin:18px 0 18px;
+      letter-spacing:-.035em;
+    }
+
+    .hero-cn{font-size:clamp(22px,3vw,34px);font-weight:700;margin-bottom:18px}
+    .hero-copy{font-size:17px;max-width:660px;color:rgba(255,255,255,.9)}
+    .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+
+    .btn{
+      min-height:50px;padding:0 24px;border-radius:999px;
+      display:inline-flex;align-items:center;justify-content:center;
+      font-weight:700;transition:.25s ease;border:1px solid transparent;
+    }
+
+    .btn-primary{background:white;color:var(--brown)}
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-ghost{border-color:rgba(255,255,255,.55);color:white;background:rgba(255,255,255,.08)}
+    .btn-dark{background:var(--brown);color:white}
+
+    section{padding:96px 0}
+    .section-tag{font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--latte-dark);margin-bottom:8px}
+    .section-title{
+      font-family:"Playfair Display","Noto Sans TC",serif;
+      font-size:clamp(36px,5vw,56px);
+      line-height:1.18;
+      color:var(--brown);
+      margin:0 0 20px;
+    }
+
+    .lead{color:var(--muted);max-width:780px;margin:0 0 38px;font-size:17px}
+    .soft{background:#efe4d8}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+
+    .card{
+      background:rgba(255,250,245,.92);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:0 10px 30px rgba(89,66,49,.06);
+    }
+
+    .card-icon{font-size:30px;margin-bottom:14px}
+    .card h3{margin:0 0 12px;color:var(--brown);font-size:20px}
+    .card p{margin:0;color:var(--muted)}
+
+    .about-visual{
+      background:white;border-radius:34px;padding:22px;box-shadow:var(--shadow);
+    }
+    .about-visual img{border-radius:24px;aspect-ratio:1/1;object-fit:cover}
+
+    .stat{
+      background:white;border:1px solid var(--line);border-radius:24px;padding:24px;
+      min-height:150px;display:flex;flex-direction:column;justify-content:center;
+    }
+    .stat strong{font-size:40px;line-height:1;color:var(--brown);margin-bottom:12px}
+    .stat span{font-size:13px;color:var(--muted)}
+
+    .event-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+    .meta{
+      background:white;border:1px solid var(--line);border-radius:22px;padding:20px;text-align:center;
+    }
+    .meta small{display:block;color:var(--muted);margin-bottom:6px}
+    .meta strong{color:var(--brown)}
+
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .step{
+      background:var(--milk);border:1px solid var(--line);border-radius:20px;
+      padding:18px;text-align:center;font-weight:700;color:var(--brown);
+    }
+
+    .list{margin:0;padding:0;list-style:none;display:grid;gap:11px}
+    .list li{position:relative;padding-left:28px;color:var(--muted)}
+    .list li::before{content:"✓";position:absolute;left:0;color:var(--latte-dark);font-weight:900}
+
+    .rights{display:flex;flex-wrap:wrap;gap:12px}
+    .pill{
+      background:white;border:1px solid var(--line);border-radius:999px;
+      padding:11px 16px;font-size:14px;color:var(--brown);
+    }
+
+    .sponsor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .sponsor-card{
+      background:white;border:1px solid var(--line);border-radius:26px;padding:26px;position:relative;overflow:hidden;
+    }
+    .sponsor-card::after{
+      content:"";position:absolute;width:120px;height:120px;border-radius:50%;
+      right:-60px;bottom:-60px;background:rgba(223,201,180,.25);
+    }
+    .sponsor-card h3{margin:10px 0;color:var(--brown)}
+    .sponsor-card p{margin:0;color:var(--muted);font-size:14px}
+    .sponsor-card .emoji{font-size:34px}
+
+    .contact{background:var(--brown);color:white}
+    .contact .section-tag,.contact .section-title,.contact .lead{color:white}
+    .contact-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px}
+    .contact-card{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:28px;padding:28px;
+    }
+    .contact-link{
+      display:flex;justify-content:space-between;gap:20px;
+      padding:14px 0;border-bottom:1px solid rgba(255,255,255,.13);
+    }
+    .contact-link:last-child{border-bottom:0}
+    .contact-link span:last-child{opacity:.76;text-align:right}
+
+    footer{padding:28px 0;text-align:center;color:var(--muted);font-size:13px}
+
+    .fade{opacity:0;transform:translateY(24px);transition:.7s ease}
+    .fade.show{opacity:1;transform:none}
+
+    .paw{
+      position:fixed;right:18px;bottom:18px;width:52px;height:52px;border-radius:50%;
+      background:var(--latte-dark);color:white;display:grid;place-items:center;
+      box-shadow:var(--shadow);z-index:90;font-size:23px;
+    }
+
+    @media (max-width:900px){
+      .nav-links{display:none}
+      .grid-3,.grid-4,.sponsor-grid{grid-template-columns:1fr 1fr}
+      .grid-2,.contact-grid{grid-template-columns:1fr}
+      .event-meta,.timeline{grid-template-columns:1fr 1fr}
+      .hero{background-position:58% center}
+    }
+
+    @media (max-width:620px){
+      .container{width:min(100% - 26px,1120px)}
+      section{padding:72px 0}
+      .nav-inner{height:64px}
+      .brand img{width:36px;height:36px}
+      .hero{
+        min-height:92svh;
+        background-image:
+          linear-gradient(180deg,rgba(45,31,23,.08) 0%,rgba(45,31,23,.35) 50%,rgba(45,31,23,.85) 100%),
+          url("assets/hero-dogs.jpg");
+        background-position:64% center;
+      }
+      .hero-content{padding:110px 0 88px}
+      h1{font-size:50px}
+      .hero-copy{font-size:15px}
+      .actions{display:grid}
+      .btn{width:100%}
+      .grid-3,.grid-4,.sponsor-grid,.event-meta,.timeline{grid-template-columns:1fr}
+      .stat{min-height:120px}
+      .contact-link{display:block}
+      .contact-link span{display:block}
+      .contact-link span:last-child{text-align:left;margin-top:4px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <img src="assets/yabe-bonnie-logo.jpg" alt="Yabe & Bonnie">
+        <span>Yabe & Bonnie</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">關於我們</a>
+        <a href="#social">社群數據</a>
+        <a href="#event">活動資訊</a>
+        <a href="#sponsor">贊助方案</a>
+        <a href="#contact">聯絡我們</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="hero-content fade">
+        <div class="kicker">Yabe & Bonnie Dog Gathering</div>
+        <h1>Every Wag<br>Tells a Story</h1>
+        <div class="hero-cn">每一次搖尾巴，都是一段故事。</div>
+        <p class="hero-copy">
+          一場專為毛孩家庭打造的溫暖聚會，結合真實體驗、社群分享與品牌互動，
+          讓品牌自然走進飼主生活，也讓每一次相遇成為值得被記住的故事。
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#sponsor">查看合作方案</a>
+          <a class="btn btn-ghost" href="#contact">聯絡我們</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container grid-2">
+        <div class="fade">
+          <div class="section-tag">01｜ABOUT US</div>
+          <h2 class="section-title">關於我們</h2>
+          <p class="lead">
+            Yabe & Bonnie 是專注分享毛孩生活、寵物友善體驗及狗狗日常的 Instagram 創作者，
+            希望透過線上內容與線下活動，打造一個讓毛孩家庭彼此交流、分享生活的平台。
+          </p>
+          <div class="card">
+            <h3>我們相信</h3>
+            <p>
+              每一次狗聚，不只是一次活動，而是一個讓毛孩探索世界、讓飼主建立友誼、
+              留下珍貴回憶的機會。我們重視每位毛孩的安全與感受，也希望每位參與者
+              都能感受到溫暖、尊重與歸屬感。
+            </p>
+          </div>
+        </div>
+        <div class="about-visual fade">
+          <img src="assets/yabe-bonnie-logo.jpg" alt="Yabe 與 Bonnie">
+        </div>
+      </div>
+    </section>
+
+    <section class="soft" id="social">
+      <div class="container">
+        <div class="section-tag">02｜SOCIAL MEDIA</div>
+        <h2 class="section-title">社群內容與數據</h2>
+        <p class="lead">Instagram：@b.y_lifediary</p>
+
+        <div class="grid-4 fade">
+          <div class="stat"><strong>1,200+</strong><span>Instagram 粉絲數</span></div>
+          <div class="stat"><strong>12.2萬</strong><span>近兩個月 Reels 累積觀看</span></div>
+          <div class="stat"><strong>34.9萬</strong><span>最高單支觀看</span></div>
+          <div class="stat"><strong>3 支</strong><span>多支影片突破萬次觀看</span></div>
+        </div>
+
+        <div class="grid-3" style="margin-top:22px">
+          <div class="card fade"><div class="card-icon">🐾</div><h3>分享內容</h3><p>毛孩日常、寵物用品開箱、狗狗美食、寵物友善餐廳、旅遊與活動。</p></div>
+          <div class="card fade"><div class="card-icon">👥</div><h3>主要受眾</h3><p>毛孩家庭、狗狗飼主，以及具有寵物用品消費需求的族群。</p></div>
+          <div class="card fade"><div class="card-icon">🤝</div><h3>合作方向</h3><p>品牌體驗、產品介紹、社群曝光、活動合作與長期內容合作。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="event">
+      <div class="container">
+        <div class="section-tag">03｜EVENT</div>
+        <h2 class="section-title">活動資訊</h2>
+        <div class="event-meta fade">
+          <div class="meta"><small>日期</small><strong>預計 9 月中旬</strong></div>
+          <div class="meta"><small>時間</small><strong>3 小時</strong></div>
+          <div class="meta"><small>地點</small><strong>享 CHILL Cafe & Bistro</strong></div>
+          <div class="meta"><small>規模</small><strong>30 人／約 25 隻狗狗</strong></div>
+        </div>
+
+        <h3 style="color:var(--brown);margin-bottom:16px">活動流程</h3>
+        <div class="timeline fade">
+          <div class="step">報到・自由交流</div>
+          <div class="step">用餐・趣味互動遊戲</div>
+          <div class="step">品牌介紹・抽獎活動</div>
+          <div class="step">大合照・自由交流</div>
+        </div>
+
+        <div class="grid-2" style="margin-top:24px">
+          <div class="card fade">
+            <h3>活動特色</h3>
+            <ul class="list">
+              <li>小型精緻聚會</li>
+              <li>控管活動人數</li>
+              <li>重視毛孩安全</li>
+              <li>品牌可直接接觸目標客群</li>
+            </ul>
+          </div>
+          <div class="card fade">
+            <h3>合作效益</h3>
+            <ul class="list">
+              <li>透過真實體驗建立信任感</li>
+              <li>增加產品體驗與後續購買機會</li>
+              <li>提升品牌曝光及社群互動</li>
+              <li>建立品牌與毛孩家庭的長期連結</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft">
+      <div class="container">
+        <div class="section-tag">04｜EXPOSURE</div>
+        <h2 class="section-title">社群曝光規劃</h2>
+        <div class="grid-3">
+          <div class="card fade">
+            <div class="card-icon">🌤️</div>
+            <h3>活動前</h3>
+            <ul class="list">
+              <li>合作品牌介紹貼文 ×1</li>
+              <li>Instagram 限時動態曝光</li>
+              <li>活動暖身宣傳</li>
+            </ul>
+          </div>
+          <div class="card fade">
+            <div class="card-icon">🎈</div>
+            <h3>活動中</h3>
+            <ul class="list">
+              <li>即時限時動態分享</li>
+              <li>品牌商品拍攝</li>
+              <li>品牌標記曝光</li>
+              <li>活動現場互動紀錄</li>
+            </ul>
+          </div>
+          <div class="card fade">
+            <div class="card-icon">🎞️</div>
+            <h3>活動後</h3>
+            <ul class="list">
+              <li>Reels 花絮影片</li>
+              <li>活動照片分享</li>
+              <li>品牌標記與成果分享</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card fade" style="margin-top:24px">
+          <h3>合作品牌基本權益</h3>
+          <div class="rights">
+            <span class="pill">活動背板 Logo</span>
+            <span class="pill">商品體驗</span>
+            <span class="pill">Instagram 貼文曝光</span>
+            <span class="pill">Instagram Reels 曝光</span>
+            <span class="pill">Instagram 限時動態曝光</span>
+            <span class="pill">活動花絮曝光</span>
+            <span class="pill">官方帳號 Tag</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsor">
+      <div class="container">
+        <div class="section-tag">05｜SPONSORSHIP</div>
+        <h2 class="section-title">贊助方案</h2>
+        <p class="lead">
+          無論是商品贊助、試用品、品牌體驗，或任何創新的合作形式，都非常歡迎與我們討論。
+          我們可依品牌需求共同規劃合作內容與曝光方式。
+        </p>
+
+        <div class="sponsor-grid">
+          <div class="sponsor-card fade"><div class="emoji">🎁</div><h3>商品贊助</h3><p>品牌提供正貨商品；我們提供現場展示、抽獎活動及品牌曝光。</p></div>
+          <div class="sponsor-card fade"><div class="emoji">🦴</div><h3>試用品贊助</h3><p>品牌提供試用品或體驗包；我們安排每位參與者發放並進行品牌介紹。</p></div>
+          <div class="sponsor-card fade"><div class="emoji">🎉</div><h3>抽獎贊助</h3><p>品牌提供抽獎商品；我們提供抽獎活動曝光及品牌介紹。</p></div>
+          <div class="sponsor-card fade"><div class="emoji">📖</div><h3>品牌文宣</h3><p>品牌提供 DM、故事卡或產品型錄；我們於現場展示與發放。</p></div>
+          <div class="sponsor-card fade"><div class="emoji">🏷️</div><h3>專屬優惠</h3><p>品牌提供折扣碼或優惠券；我們於活動後分享給所有參與者。</p></div>
+          <div class="sponsor-card fade"><div class="emoji">🤝</div><h3>客製合作</h3><p>依品牌需求，客製規劃合作內容、互動形式與曝光方式。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div class="fade">
+          <div class="section-tag">06｜CONTACT</div>
+          <h2 class="section-title">期待與您一起完成<br>這場溫暖的毛孩聚會</h2>
+          <p class="lead">
+            感謝您撥空閱讀本次合作企劃。我們期待與您攜手，
+            讓品牌與毛孩家庭建立真實且有意義的連結，共同創造更多值得分享的故事。
+          </p>
+          <a class="btn btn-primary" href="mailto:vvn821006@gmail.com">寄送合作邀請</a>
+        </div>
+        <div class="contact-card fade">
+          <a class="contact-link" href="https://www.instagram.com/b.y_lifediary" target="_blank" rel="noopener">
+            <span>Instagram</span><span>@b.y_lifediary</span>
+          </a>
+          <div class="contact-link"><span>聯絡人</span><span>鄭羽喬</span></div>
+          <a class="contact-link" href="mailto:vvn821006@gmail.com"><span>Email</span><span>vvn821006@gmail.com</span></a>
+          <div class="contact-link"><span>LINE</span><span>vivian7570</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="paw" href="#top" aria-label="回到頂端">🐾</a>
+
+  <footer>© 2026 Yabe & Bonnie · Every Wag Tells a Story</footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add('show');
+      });
+    },{threshold:.12});
+    document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
